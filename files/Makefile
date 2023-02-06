@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME        := push_swap
+NAME        := so_long
 
 SRC_DIR     := srcs
 SRCS := \
@@ -31,7 +31,7 @@ DIR_DUP     = mkdir -p ${@D}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${OBJS} -o ${NAME}
+	${CC} ${OBJS} -Lmlx_linux -lmlx_Linux -L./mlx_linux -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
 
