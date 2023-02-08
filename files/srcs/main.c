@@ -48,6 +48,39 @@ int render_frame(t_vars vars)
 	return (0);
 }
 
+void mlx_initialize(t_vars *vars)
+{
+	vars->mlx = mlx_init();
+	if (!vars->mlx)
+		mlx_free(vars);
+
+	vars->mlx_win = mlx_new_window(vars->mlx, 800, 600, "So Long!");
+	if (!vars->mlx_win)
+		mlx_free(vars);
+}
+
+void mlx_initialize_img(t_vars *vars)
+{
+	vars->background.path = "./../assets/background.xpm";
+	vars->background.img = mlx_xpm_file_to_image(vars->mlx, vars->background.path, &vars->background.width, &vars->background.height);
+	if (!vars->background.img)
+		mlx_free(vars);
+
+	vars->player.x = 0;
+	vars->player.y = 0;
+	vars->player.path = "./../assets/sly_cooper.xpm";
+	vars->player.img = mlx_xpm_file_to_image(vars->mlx, vars->player.path, &vars->player.width, &vars->player.height);
+	if (!vars->player.img)
+		mlx_free(vars);
+
+	vars->coin.x = 64;
+	vars->coin.y = 64;
+	vars->coin.path = "./../assets/coin.xpm";
+	vars->coin.img = mlx_xpm_file_to_image(vars->mlx, vars->coin.path, &vars->coin.width, &vars->coin.height);
+	if (!vars->coin.img)
+		mlx_free(vars);
+}
+
 int	main(void)
 {
 	t_vars	vars;
