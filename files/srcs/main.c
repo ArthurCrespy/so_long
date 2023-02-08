@@ -10,19 +10,19 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-typedef struct	s_vars
+void	mlx_free(t_vars *vars)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data  img;
-}				t_vars;
-
-void    mlx_free(t_vars vars)
-{
-	mlx_destroy_image(vars.mlx, vars.img.img);
-	mlx_destroy_window(vars.mlx, vars.mlx_win);
-	mlx_destroy_display(vars.mlx);
-	free(vars.mlx);
+	if (vars->background.img)
+		mlx_destroy_image(vars->mlx, vars->background.img);
+	if (vars->player.img)
+		mlx_destroy_image(vars->mlx, vars->player.img);
+	if (vars->mlx_win)
+		mlx_destroy_window(vars->mlx, vars->mlx_win);
+	if (vars->mlx_win)
+		mlx_destroy_display(vars->mlx);
+	if (vars->mlx)
+		free(vars->mlx);
+	exit(0);
 }
 
 
