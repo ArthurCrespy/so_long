@@ -42,9 +42,11 @@ int	key_press(int keycode, t_vars *vars)
 	return (0);
 }
 
-int render_frame(t_vars vars)
+int	render_frame(t_vars *vars)
 {
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.img.img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->background.img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->player.img, vars->player.x, vars->player.y);
+	usleep(100000/120);
 	return (0);
 }
 
