@@ -26,14 +26,19 @@ void	mlx_free(t_vars *vars)
 }
 
 
-int key_press(int keycode, t_vars vars)
+int	key_press(int keycode, t_vars *vars)
 {
 	printf("key pressed %d\n", keycode);
 	if (keycode == 65307)
-	{
 		mlx_free(vars);
-		exit(0);
-	}
+	if (keycode == 65361 && vars->player.x - 64 >= 0)
+		vars->player.x -= 64;
+	if (keycode == 65362 && vars->player.y - 64 >= 0)
+		vars->player.y -= 64;
+	if (keycode == 65363 && vars->player.x + 64 <= vars->background.width - vars->player.width)
+		vars->player.x += 64;
+	if (keycode == 65364&& vars->player.y + 64 <= vars->background.height - vars->player.height)
+		vars->player.y += 64;
 	return (0);
 }
 
