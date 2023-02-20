@@ -87,10 +87,28 @@ int	key_press(int keycode, t_vars *vars)
 
 int	render_frame(t_vars *vars)
 {
+	int i_col;
+	int i_row;
+
+	i_col = 0;
+	i_row = 0;
 	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->background.img, 0, 0);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->coin.img, vars->coin.x, vars->coin.y);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->wall.img, vars->wall.x, vars->wall.y);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->player.img, vars->player.x, vars->player.y);
+	while (vars->map[i_col])
+	{
+		while (vars->map[i_col][i_row])
+		{
+			if (vars->map[i_col][i_row] == '1')
+				mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->wall.img, i_row * 64, i_col * 64);
+			if (vars->map[i_col][i_row] == 'P')
+				mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->player.img, i_row * 64, i_col * 64);
+			if (vars->map[i_col][i_row] == 'C')
+				mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->coin.img, i_row * 64, i_col * 64);
+			if (vars->map[i_col][i_row] == 'E')
+				mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->exit.img, i_row * 64, i_col * 64);
+			i_row++;
+		}
+		i_col++;
+	}
 	usleep(100000 / 120);
 	return (0);
 }
@@ -111,8 +129,14 @@ void	mlx_initialize_img(t_vars *vars)
 	vars->background.img = mlx_xpm_file_to_image(vars->mlx, vars->background.path, &vars->background.width, &vars->background.height);
 	if (!vars->background.img)
 		mlx_free(vars);
-	vars->player.x = 0;
-	vars->player.y = 0;
+	vars->wall.x = 64;
+	vars->wall.y = 64;
+	vars->wall.path = "./../assets/wall.xpm";
+	vars->wall.img = mlx_xpm_file_to_image(vars->mlx, vars->wall.path, &vars->wall.width, &vars->wall.height);
+	if (!vars->wall.img)
+		mlx_free(vars);
+	vars->player.x = 64;
+	vars->player.y = 64;
 	vars->player.path = "./../assets/sly_cooper.xpm";
 	vars->player.img = mlx_xpm_file_to_image(vars->mlx, vars->player.path, &vars->player.width, &vars->player.height);
 	if (!vars->player.img)
@@ -123,20 +147,53 @@ void	mlx_initialize_img(t_vars *vars)
 	vars->coin.img = mlx_xpm_file_to_image(vars->mlx, vars->coin.path, &vars->coin.width, &vars->coin.height);
 	if (!vars->coin.img)
 		mlx_free(vars);
-	vars->wall.x = 128;
-	vars->wall.y = 128;
-	vars->wall.path = "./../assets/wall.xpm";
-	vars->wall.img = mlx_xpm_file_to_image(vars->mlx, vars->wall.path, &vars->wall.width, &vars->wall.height);
-	if (!vars->wall.img)
+	vars->exit.x = 64;
+	vars->exit.y = 64;
+	vars->exit.path = "./../assets/sly_cooper.xpm";
+	vars->exit.img = mlx_xpm_file_to_image(vars->mlx, vars->exit.path, &vars->exit.width, &vars->exit.height);
+	if (!vars->exit.img)
 		mlx_free(vars);
 }
 
-int	main(void)
+void open_map(t_vars *vars, char *path)
+{
+	int fd;
+	char *gnl;
+	char *join;
+	char *tmp;
+	char **map;
+
+	gnl = "";
+	tmp = "";
+	join = calloc(sizeof (char), 1);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error\n");
+		exit(1);
+	}
+	while (1)
+	{
+		gnl = get_next_line(fd);
+		if (!gnl)
+			break;
+		tmp = join;
+		join = ft_strjoin(tmp, gnl);
+		free(tmp);
+		free(gnl);
+	}
+	vars->map = ft_split(join, '\n');
+	free(join);
+	close(fd);
+}
+
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
 	mlx_initialize(&vars);
 	mlx_initialize_img(&vars);
+	open_map(&vars, argv[1]);
 	mlx_hook(vars.mlx_win, 2, 1L << 0, (int (*)(void)) key_press, &vars);
 	mlx_hook(vars.mlx_win, 17, 1L << 17, (int (*)(void)) mlx_free, &vars);
 	mlx_loop_hook(vars.mlx, (int (*)(void)) render_frame, &vars);
