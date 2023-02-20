@@ -46,6 +46,8 @@ void	mlx_free(t_vars *vars)
 
 int	check_collision(t_vars *vars, int direction)
 {
+	(void)direction;
+	(void)vars;
 /*	while (vars->wall->next != NULL)
 	{
 		if (direction == 1
@@ -161,7 +163,6 @@ void open_map(t_vars *vars, char *path)
 	char *gnl;
 	char *join;
 	char *tmp;
-	char **map;
 
 	gnl = "";
 	tmp = "";
@@ -191,6 +192,7 @@ int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
+	(void)argc;
 	mlx_initialize(&vars);
 	mlx_initialize_img(&vars);
 	open_map(&vars, argv[1]);
