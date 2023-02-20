@@ -14,6 +14,15 @@
 
 void	mlx_free(t_vars *vars)
 {
+	int i;
+
+	i = 0;
+	while (vars->map[i])
+	{
+		printf("%s\n", vars->map[i]);
+		free(vars->map[i]);
+		i++;
+	}
 	if (vars->background.img)
 		mlx_destroy_image(vars->mlx, vars->background.img);
 	if (vars->player.img)
@@ -22,12 +31,16 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->coin.img);
 	if (vars->wall.img)
 		mlx_destroy_image(vars->mlx, vars->wall.img);
+	if (vars->exit.img)
+		mlx_destroy_image(vars->mlx, vars->exit.img);
 	if (vars->mlx_win)
 		mlx_destroy_window(vars->mlx, vars->mlx_win);
 	if (vars->mlx_win)
 		mlx_destroy_display(vars->mlx);
 	if (vars->mlx)
 		free(vars->mlx);
+	if (vars->map)
+		free(vars->map);
 	exit(0);
 }
 
