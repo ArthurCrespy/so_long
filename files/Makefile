@@ -15,6 +15,9 @@ NAME        := so_long
 SRC_DIR     := srcs
 SRCS := \
 			main.c \
+			ft_split.c \
+			get_next_line.c \
+			utils.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
