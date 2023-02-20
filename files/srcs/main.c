@@ -33,17 +33,21 @@ void	mlx_free(t_vars *vars)
 
 int	check_collision(t_vars *vars, int direction)
 {
-	if (direction == 1
-		&& vars->player.y == vars->wall.y + vars->wall.height)
-		return (1);
-	if (direction == 2 && vars->player.y + vars->player.height == vars->wall.y)
-		return (1);
-	if (direction == 3 && vars->player.x == vars->wall.x + vars->wall.width)
-		return (1);
-	if (direction == 4 && vars->player.x + vars->player.width == vars->wall.x)
-		return (1);
-	else
-		return (0);
+/*	while (vars->wall->next != NULL)
+	{
+		if (direction == 1
+		    && vars->player.y == vars->wall->y + vars->wall->height)
+			return (1);
+		if (direction == 2 && vars->player.y + vars->player.height == vars->wall->y)
+			return (1);
+		if (direction == 3 && vars->player.x == vars->wall->x + vars->wall->width)
+			return (1);
+		if (direction == 4 && vars->player.x + vars->player.width == vars->wall->x)
+			return (1);
+		else
+			vars->wall = vars->wall->next;
+	}*/
+	return (0);
 }
 
 int	key_press(int keycode, t_vars *vars)
