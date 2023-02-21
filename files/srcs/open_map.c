@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 22:18:49 by acrespy           #+#    #+#             */
+/*   Updated: 2023/02/21 22:20:28 by acrespy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	check_path(char *path)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path, O_DIRECTORY);
 	if (fd >= 0)
@@ -19,20 +31,19 @@ void	check_path(char *path)
 	close(fd);
 }
 
-void    save_map(t_vars *vars, char *map)
+void	save_map(t_vars *vars, char *map)
 {
 	vars->map.map = ft_split(map, '\n');
 	vars->map.height = ft_strlen(map) / ft_strlen(vars->map.map[0]) * 64;
 	vars->map.width = ft_strlen(vars->map.map[0]) * 64;
 }
 
-
-void read_map(t_vars *vars, char *path)
+void	read_map(t_vars *vars, char *path)
 {
-	int fd;
-	char *tmp;
-	char *gnl;
-	char *join;
+	int		fd;
+	char	*tmp;
+	char	*gnl;
+	char	*join;
 
 	join = calloc(sizeof (char), 1);
 	fd = open(path, O_RDONLY);
@@ -46,7 +57,7 @@ void read_map(t_vars *vars, char *path)
 	{
 		gnl = get_next_line(fd);
 		if (!gnl)
-			break;
+			break ;
 		tmp = join;
 		join = ft_strjoin(tmp, gnl);
 		free(tmp);
@@ -57,7 +68,7 @@ void read_map(t_vars *vars, char *path)
 	close(fd);
 }
 
-void    open_map(t_vars *vars, char *path)
+void	open_map(t_vars *vars, char *path)
 {
 	check_path(path);
 	read_map(vars, path);

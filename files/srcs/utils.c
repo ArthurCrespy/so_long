@@ -6,15 +6,15 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:12:02 by acrespy           #+#    #+#             */
-/*   Updated: 2023/01/07 16:40:37 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/21 22:15:56 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void ft_exit(char *s, int status)
+void	ft_exit(char *s, int status)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s && s[i] != '\0')
