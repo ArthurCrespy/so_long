@@ -14,9 +14,15 @@ NAME        := so_long
 
 SRC_DIR     := srcs
 SRCS := \
-			main.c \
+			check_map.c \
 			ft_split.c \
 			get_next_line.c \
+			main.c \
+			mlx.c \
+			mlx_free.c \
+			mlx_initialize.c \
+			moves.c \
+			open_map.c \
 			utils.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
