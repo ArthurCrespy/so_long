@@ -29,7 +29,7 @@ char	*ft_strdup(const char *s)
 	return (result);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, int start, size_t len)
 {
 	char	*str;
 	size_t	i;
