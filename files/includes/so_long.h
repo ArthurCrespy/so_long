@@ -25,6 +25,24 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+typedef struct s_data
+{
+	int		width;
+	int		height;
+	char	*path;
+	void	*img;
+
+}				t_data;
+
+typedef struct s_map
+{
+	int		width;
+	int		height;
+	char 	*path;
+	char	**map;
+
+}				t_map;
+
 typedef struct s_object
 {
 	int		x;
@@ -35,26 +53,33 @@ typedef struct s_object
 	void	*img;
 }			t_object;
 
-typedef struct s_data
-{
-	int		width;
-	int		height;
-	char	*path;
-	void	*img;
-
-}				t_data;
-
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*mlx_win;
-	char 		**map;
+	t_map 		map;
+	t_data 		screen;
 	t_data		background;
 	t_object	player;
 	t_object	coin;
 	t_object	exit;
 	t_object	wall;
 }				t_vars;
+
+void    check_map(t_vars *vars);
+void    open_map(t_vars *vars, char *path);
+
+void    ft_exit(char *s, int status);
+
+void	mlx_initialize(t_vars *vars);
+void	mlx_free(t_vars *vars);
+void	mlx_error(t_vars *vars);
+void    mlx_run(t_vars *vars);
+
+void    move_up(t_vars *vars);
+void    move_down(t_vars *vars);
+void    move_right(t_vars *vars);
+void    move_left(t_vars *vars);
 
 int     ft_strlen(const char *str);
 char	*get_next_line(int fd);
