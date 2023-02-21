@@ -12,6 +12,19 @@
 
 #include "../includes/so_long.h"
 
+void ft_exit(char *s, int status)
+{
+	int i;
+
+	i = 0;
+	while (s && s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	exit(status);
+}
+
 int	ft_strlen(const char *str)
 {
 	int	i;
