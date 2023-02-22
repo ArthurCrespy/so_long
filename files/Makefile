@@ -14,16 +14,20 @@ NAME        := so_long
 
 SRC_DIR     := srcs
 SRCS := \
-			check_map.c \
+			ft_get_next_line.c \
+			ft_put.c \
 			ft_split.c \
-			get_next_line.c \
+			ft_strjoin.c \
+			ft_utils.c \
+			game_collectibles.c \
+			game_exit.c \
+			game_moves.c \
 			main.c \
-			mlx.c \
+			map_check.c \
+			map_open.c \
 			mlx_free.c \
 			mlx_initialize.c \
-			moves.c \
-			open_map.c \
-			utils.c \
+			mlx_run.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
