@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 18:16:52 by acrespy           #+#    #+#             */
-/*   Updated: 2022/11/15 06:49:16 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:55:18 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,6 @@ char	*ft_substr(char const *s, int start, size_t len)
 	return (str);
 }
 
-int	ft_count_word(char const *s, char c)
-{
-	int	i;
-	int	word;
-
-	i = 0;
-	word = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-	{
-		if (s[i] != c)
-		{
-			word++;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-		}
-		else
-			i++;
-	}
-	return (word);
-}
-
 int	ft_size_word(char const *s, char c, int i)
 {
 	int	size;
@@ -111,7 +88,7 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	word = ft_count_word(s, c);
 	strs = (char **)malloc((word + 1) * sizeof(char *));
-	if (strs == NULL)
+	if (!strs)
 		return (0);
 	while (j < word)
 	{

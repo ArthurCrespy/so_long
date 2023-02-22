@@ -65,3 +65,25 @@ char	*ft_calloc(size_t nmemb, size_t size)
 	return (result);
 }
 
+int	ft_count_word(char const *s, char c)
+{
+	int	i;
+	int	word;
+
+	i = 0;
+	word = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			word++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (word);
+}
