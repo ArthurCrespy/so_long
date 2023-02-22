@@ -81,6 +81,9 @@ void		mlx_hook_exit(t_vars *vars);
 void		ft_free_map(t_vars *vars);
 void		mlx_free(t_vars *vars);
 
+// ----------- FLOOD_FILL ----------- //
+int			ft_flood_fill(char **map, char c, int x, int y, int width, int height);
+
 // --------------- GNL -------------- //
 char		*get_next_line(int fd);
 
@@ -96,6 +99,7 @@ char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char *s1, char *s2);
 
 // ------------ FT_UTILS ------------ //
+int			ft_compare(char c, char c1);
 int			ft_strlen(const char *str);
 char		*ft_strchr(const char *string, int c);
 char		*ft_calloc(size_t nmemb, size_t size);
@@ -114,11 +118,25 @@ void		move_down(t_vars *vars);
 void		move_right(t_vars *vars);
 void		move_left(t_vars *vars);
 
+// ------------- POSITION ----------- //
+int			get_position_x(t_vars *vars, char c);
+int			get_position_y(t_vars *vars, char c);
+
 // ------------ MAP_CHECK ----------- //
+void		check_map_shape(t_vars *vars);
+void		check_map_walls(t_vars *vars);
+void		check_map_path(t_vars *vars);
+void		check_map_letters(t_vars *vars);
+void		check_map_player(t_vars *vars);
+void		check_map_exit(t_vars *vars);
 void		check_map(t_vars *vars);
 
 // ------------ MAP_OPEN ------------ //
+void		check_path(char *path);
+void		check_ext(char *path);
 void		open_map(t_vars *vars, char *path);
+void		read_map(t_vars *vars, char *path);
+void		count_objects(t_vars *vars);
 
 // ------------ MLX_INIT ------------ //
 void		mlx_initialize_win(t_vars *vars);
