@@ -35,9 +35,15 @@ void	move_right(t_vars *vars)
 	if (vars->player.x + 64 <= vars->screen.width - vars->player.width
 		&& !check_collision(vars, 4))
 	{
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		if (check_stand_exit(vars))
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'E';
+		else
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		check_exit(vars, 4);
 		vars->player.x += 64;
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'P';
+		vars->player.nb++;
+		ft_putmoves(vars);
+		check_collectible(vars);
 	}
 }
 
@@ -46,9 +52,15 @@ void	move_left(t_vars *vars)
 	if (vars->player.x - 64 >= 0
 		&& !check_collision(vars, 3))
 	{
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		if (check_stand_exit(vars))
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'E';
+		else
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		check_exit(vars, 3);
 		vars->player.x -= 64;
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'P';
+		vars->player.nb++;
+		ft_putmoves(vars);
+		check_collectible(vars);
 	}
 }
 
@@ -57,9 +69,15 @@ void	move_up(t_vars *vars)
 	if (vars->player.y - 64 >= 0
 		&& !check_collision(vars, 1))
 	{
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		if (check_stand_exit(vars))
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'E';
+		else
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		check_exit(vars, 1);
 		vars->player.y -= 64;
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'P';
+		vars->player.nb++;
+		ft_putmoves(vars);
+		check_collectible(vars);
 	}
 }
 
@@ -68,8 +86,14 @@ void	move_down(t_vars *vars)
 	if (vars->player.y + 64 <= vars->screen.height - vars->player.height
 		&& !check_collision(vars, 2))
 	{
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		if (check_stand_exit(vars))
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'E';
+		else
+			vars->map.map[vars->player.y / 64][vars->player.x / 64] = '0';
+		check_exit(vars, 2);
 		vars->player.y += 64;
-		vars->map.map[vars->player.y / 64][vars->player.x / 64] = 'P';
+		vars->player.nb++;
+		ft_putmoves(vars);
+		check_collectible(vars);
 	}
 }
