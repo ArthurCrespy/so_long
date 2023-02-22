@@ -21,6 +21,16 @@ void	ft_free_map(t_vars *vars)
 		free(vars->map.map[i++]);
 	if (vars->map.map)
 		free(vars->map.map);
+	i = 0;
+	while (vars->map.coin_map[i])
+		free(vars->map.coin_map[i++]);
+	if (vars->map.coin_map)
+		free(vars->map.coin_map);
+	i = 0;
+	while (vars->map.exit_map[i])
+		free(vars->map.exit_map[i++]);
+	if (vars->map.exit_map)
+		free(vars->map.exit_map);
 }
 
 void	mlx_free(t_vars *vars)

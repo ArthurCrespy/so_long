@@ -39,6 +39,8 @@ typedef struct s_map
 	int		width;
 	int		height;
 	char	**map;
+	char    **coin_map;
+	char	**exit_map;
 
 }				t_map;
 
