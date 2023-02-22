@@ -15,7 +15,8 @@
 void	open_map(t_vars *vars, char *path)
 {
 	check_path(path);
+	check_ext(path);
 	read_map(vars, path);
-	check_map(vars);
 	count_objects(vars);
+	check_map(vars);
 }
