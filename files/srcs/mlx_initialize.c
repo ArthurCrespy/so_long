@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_initialize.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:11:48 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:03 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:45:04 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	mlx_initialize_win(t_vars *vars)
 	{
 		mlx_destroy_display(vars->mlx);
 		free(vars->mlx);
-		ft_exit(vars, "Error: Map is too big for the screen\n", 1);
+		ft_exit("Error: Map is too big for the screen\n", 1);
 	}
 	if (!vars->mlx_win)
 		mlx_error(vars);
@@ -34,8 +34,8 @@ void	mlx_initialize_win(t_vars *vars)
 
 void	mlx_initialize_img(t_vars *vars)
 {
-	int i_row;
-	int i_col;
+	int	i_row;
+	int	i_col;
 
 	i_row = 0;
 	vars->background.path = "./../assets/background.xpm";
