@@ -15,6 +15,8 @@
 void	check_map(t_vars *vars)
 {
 	check_map_shape(vars);
+	check_map_walls(vars);
+	check_map_path(vars);
 	check_map_letters(vars);
 	check_map_player(vars);
 	check_map_exit(vars);
