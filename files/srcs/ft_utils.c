@@ -6,18 +6,11 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:12:02 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 15:55:26 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:49:03 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void ft_exit(t_vars *vars, char *msg, int status)
-{
-	free_map(vars);
-	ft_putstr(msg);
-	exit(status);
-}
 
 int	ft_strlen(const char *str)
 {
@@ -56,7 +49,7 @@ char	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	result = malloc(nmemb * size);
 	if (!result)
-		return (NULL);
+		ft_exit("Error: Malloc failed\n", 1);
 	while (i < nmemb * size)
 	{
 		result[i] = '\0';
