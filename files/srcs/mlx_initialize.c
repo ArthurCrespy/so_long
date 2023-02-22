@@ -34,6 +34,10 @@ void	mlx_initialize_win(t_vars *vars)
 
 void	mlx_initialize_img(t_vars *vars)
 {
+	int i_row;
+	int i_col;
+
+	i_row = 0;
 	vars->background.path = "./../assets/background.xpm";
 	vars->background.img = mlx_xpm_file_to_image(vars->mlx,
 			vars->background.path,
@@ -45,6 +49,21 @@ void	mlx_initialize_img(t_vars *vars)
 			&vars->wall.width, &vars->wall.height);
 	if (!vars->wall.img)
 		mlx_error(vars);
+	vars->player.nb = 0;
+	while (vars->map.map[i_row])
+	{
+		i_col = 0;
+		while (vars->map.map[i_row][i_col])
+		{
+			if (vars->map.map[i_row][i_col] == 'P')
+			{
+				vars->player.x = i_col * 64;
+				vars->player.y = i_row * 64;
+			}
+			i_col++;
+		}
+		i_row++;
+	}
 	vars->player.path = "./../assets/sly_cooper.xpm";
 	vars->player.img = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
 			&vars->player.width, &vars->player.height);
