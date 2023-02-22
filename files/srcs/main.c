@@ -28,9 +28,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// Need to check if the map is closed by walls (1)
-// Need to check the path of the map
-// Need to check the name of the map (extension)
+// Need to fix Norminette errors
 // Need to add a git clone of the MLX library in the Makefile
 // Need to execute the Makefile of the MLX library
 // ---------------------------- //
