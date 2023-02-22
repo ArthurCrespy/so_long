@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:45:59 by acrespy           #+#    #+#             */
 /*   Updated: 2023/02/22 15:55:12 by acrespy          ###   ########.fr       */
@@ -22,6 +22,8 @@ void	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		write(1, &str[i], 1);
