@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:12:02 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/21 22:15:56 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:55:26 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_exit(char *s, int status)
+void ft_exit(t_vars *vars, char *msg, int status)
 {
-	int	i;
-
-	i = 0;
-	while (s && s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	free_map(vars);
+	ft_putstr(msg);
 	exit(status);
 }
 
@@ -71,30 +65,3 @@ char	*ft_calloc(size_t nmemb, size_t size)
 	return (result);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	int		i_s1;
-	int		i_s2;
-	char	*result;
-
-	i_s1 = 0;
-	i_s2 = 0;
-	result = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
-	if (!result)
-		return (NULL);
-	if (s1 && s1[i_s1] && s1[0] != '\0')
-	{
-		while (s1[i_s1])
-		{
-			result[i_s1] = s1[i_s1];
-			i_s1++;
-		}
-	}
-	while (s2 && s2[i_s2] && s2[0] != '\0')
-	{
-		result[i_s1 + i_s2] = s2[i_s2];
-		i_s2++;
-	}
-	result[i_s1 + i_s2] = '\0';
-	return (result);
-}
