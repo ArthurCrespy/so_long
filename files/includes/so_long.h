@@ -46,6 +46,7 @@ typedef struct s_object
 {
 	int		x;
 	int		y;
+	int 	nb;
 	int		width;
 	int		height;
 	char	*path;
