@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_run.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:23:44 by acrespy           #+#    #+#             */
 /*   Updated: 2023/02/22 15:56:09 by acrespy          ###   ########.fr       */
@@ -15,7 +15,7 @@
 int	key_press(int keycode, t_vars *vars)
 {
 	if (keycode == 65307)
-		mlx_exit(vars);
+		mlx_exit(vars, NULL, 0);
 	if (keycode == 65361 || keycode == 97)
 		move_left(vars);
 	if (keycode == 65362 || keycode == 119)
