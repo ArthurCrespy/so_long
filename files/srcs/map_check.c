@@ -24,7 +24,7 @@ void	check_map_shape(t_vars *vars)
 		while (vars->map.map[i_col][i_row])
 			i_row++;
 		if (i_row != ft_strlen(vars->map.map[0]))
-			ft_exit("Error: Map is not rectangular/square\n", 1);
+			ft_exit(vars, "Error: Map must be rectangular or square\n", 1);
 		i_col++;
 	}
 }
@@ -45,7 +45,7 @@ void	check_map_content(t_vars *vars)
 				&& vars->map.map[i_col][i_row] != 'P'
 				&& vars->map.map[i_col][i_row] != 'C'
 				&& vars->map.map[i_col][i_row] != 'E')
-				ft_exit("Error: Invalid character in map\n", 1);
+				ft_exit(vars, "Error: Invalid character in map\n", 1);
 			i_row++;
 		}
 		i_col++;
@@ -76,9 +76,9 @@ void	check_map_objects(t_vars *vars)
 		i_col++;
 	}
 	if (p_count != 1)
-		ft_exit("Error: Map must have one player\n", 1);
+		ft_exit(vars, "Error: Map must have one player\n", 1);
 	if (e_count != 1)
-		ft_exit("Error: Map must have one player\n", 1);
+		ft_exit(vars, "Error: Map must have one exit\n", 1);
 }
 
 void	check_map(t_vars *vars)
