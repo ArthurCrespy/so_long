@@ -6,13 +6,13 @@
 /*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:16:08 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/21 22:16:26 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:55:58 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	mlx_free(t_vars *vars)
+void    free_map(t_vars *vars)
 {
 	int	i;
 
@@ -21,6 +21,12 @@ void	mlx_free(t_vars *vars)
 		free(vars->map.map[i++]);
 	if (vars->map.map)
 		free(vars->map.map);
+}
+
+
+void	mlx_free(t_vars *vars)
+{
+	free_map(vars);
 	if (vars->background.img)
 		mlx_destroy_image(vars->mlx, vars->background.img);
 	if (vars->player.img)
@@ -45,8 +51,14 @@ void	mlx_exit(t_vars *vars)
 	exit(0);
 }
 
+void	mlx_exit_msg(t_vars *vars, char *msg)
+{
+	mlx_free(vars);
+	ft_exit(vars, msg, 0);
+}
+
 void	mlx_error(t_vars *vars)
 {
 	mlx_free(vars);
-	ft_exit("Error: Something went wrong with MiniLibX\n", 1);
+	ft_exit(vars, "Error: Something went wrong with MiniLibX\n", 1);
 }
