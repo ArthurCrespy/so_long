@@ -67,6 +67,26 @@ void	read_map(t_vars *vars, char *path)
 	close(fd);
 }
 
+void    count_objects(t_vars *vars)
+{
+	int i_col;
+	int i_row;
+
+	i_col = 0;
+	vars->coin.nb = 0;
+	while (vars->map.map[i_col])
+	{
+		i_row = 0;
+		while (vars->map.map[i_col][i_row])
+		{
+			if (vars->map.map[i_col][i_row] == 'C')
+				vars->coin.nb++;
+			i_row++;
+		}
+		i_col++;
+	}
+}
+
 void	open_map(t_vars *vars, char *path)
 {
 	check_path(vars, path);
