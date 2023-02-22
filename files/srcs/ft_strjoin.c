@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:39:46 by acrespy           #+#    #+#             */
 /*   Updated: 2023/02/22 15:55:22 by acrespy          ###   ########.fr       */
