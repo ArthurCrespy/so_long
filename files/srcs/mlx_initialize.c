@@ -6,7 +6,7 @@
 /*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:11:48 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/21 22:15:38 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:56:03 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	mlx_initialize_win(t_vars *vars)
 				vars->map.height, "So Long!");
 	else
 	{
-		mlx_free(vars);
-		ft_exit("Error: Map is too big for the screen\n", 1);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+		ft_exit(vars, "Error: Map is too big for the screen\n", 1);
 	}
 	if (!vars->mlx_win)
 		mlx_error(vars);
