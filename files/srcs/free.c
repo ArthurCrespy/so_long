@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	free_map(t_vars *vars)
+void	ft_free_map(t_vars *vars)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	free_map(t_vars *vars)
 
 void	mlx_free(t_vars *vars)
 {
-	free_map(vars);
+	ft_free_map(vars);
 	if (vars->background.img)
 		mlx_destroy_image(vars->mlx, vars->background.img);
 	if (vars->player.img)

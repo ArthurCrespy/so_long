@@ -25,7 +25,7 @@ void	check_map_shape(t_vars *vars)
 			i_row++;
 		if (i_row != ft_strlen(vars->map.map[0]))
 		{
-			free_map(vars);
+			ft_free_map(vars);
 			ft_exit("Error: Map must be rectangular or square\n", 1);
 		}
 		i_col++;
@@ -49,7 +49,7 @@ void	check_map_letters(t_vars *vars)
 				&& vars->map.map[i_col][i_row] != 'C'
 				&& vars->map.map[i_col][i_row] != 'E')
 			{
-				free_map(vars);
+				ft_free_map(vars);
 				ft_exit("Error: Invalid character in map\n", 1);
 			}
 			i_row++;
@@ -79,7 +79,7 @@ void	check_map_player(t_vars *vars)
 	}
 	if (p_count != 1)
 	{
-		free_map(vars);
+		ft_free_map(vars);
 		ft_exit("Error: Map must have one player\n", 1);
 	}
 }
@@ -105,7 +105,7 @@ void	check_map_exit(t_vars *vars)
 	}
 	if (e_count != 1)
 	{
-		free_map(vars);
+		ft_free_map(vars);
 		ft_exit("Error: Map must have one exit\n", 1);
 	}
 }

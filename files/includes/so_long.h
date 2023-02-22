@@ -76,7 +76,7 @@ void		mlx_exit(t_vars *vars, char *msg, int status);
 void		mlx_hook_exit(t_vars *vars);
 
 // -------------- FREE -------------- //
-void		free_map(t_vars *vars);
+void		ft_free_map(t_vars *vars);
 void		mlx_free(t_vars *vars);
 
 // --------------- GNL -------------- //
