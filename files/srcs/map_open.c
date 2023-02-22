@@ -12,20 +12,20 @@
 
 #include "../includes/so_long.h"
 
-void	check_path(char *path)
+void check_path(t_vars *vars, char *path)
 {
 	int	fd;
 
 	fd = open(path, O_DIRECTORY);
 	if (fd >= 0)
 	{
-		ft_exit("Error: Path is a directory\n", 1);
+		ft_exit(vars, "Error: Path is a directory\n", 1);
 		exit(1);
 	}
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_exit("Error: File does not exist\n", 1);
+		ft_exit(vars, "Error: File does not exist\n", 1);
 		exit(1);
 	}
 	close(fd);
@@ -49,9 +49,8 @@ void	read_map(t_vars *vars, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_exit("Error: Open failed\n", 1);
 		free(join);
-		exit(1);
+		ft_exit(vars, "Error: Open failed\n", 1);
 	}
 	while (1)
 	{
@@ -70,7 +69,8 @@ void	read_map(t_vars *vars, char *path)
 
 void	open_map(t_vars *vars, char *path)
 {
-	check_path(path);
+	check_path(vars, path);
 	read_map(vars, path);
 	check_map(vars);
+	count_objects(vars);
 }
