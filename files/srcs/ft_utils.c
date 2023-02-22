@@ -12,6 +12,13 @@
 
 #include "../includes/so_long.h"
 
+int ft_compare(char c, char c1)
+{
+	if (c == c1)
+		return (1);
+	return (0);
+}
+
 int	ft_strlen(const char *str)
 {
 	int	i;
