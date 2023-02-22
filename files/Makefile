@@ -14,6 +14,7 @@ NAME        := so_long
 
 SRC_DIR     := srcs
 SRCS := \
+			args_check.c \
 			ft_get_next_line.c \
 			ft_put.c \
 			ft_split.c \
