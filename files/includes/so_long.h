@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/21 22:30:34 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:50:08 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_object
 {
 	int		x;
 	int		y;
-	int 	nb;
+	int		nb;
 	int		width;
 	int		height;
 	char	*path;
@@ -66,42 +66,64 @@ typedef struct s_vars
 	t_object	wall;
 }				t_vars;
 
-void		check_map(t_vars *vars);
-void		open_map(t_vars *vars, char *path);
+// ----------- ARGS_CHECK ----------- //
+void		check_args(int argc, char **argv);
 
-void		mlx_initialize_win(t_vars *vars);
-void		mlx_initialize_img(t_vars *vars);
-
-int			key_press(int keycode, t_vars *vars);
-int			render_frame(t_vars *vars);
-
-void    free_map(t_vars *vars);
-void		mlx_free(t_vars *vars);
+// -------------- EXIT -------------- //
+void		ft_exit(char *msg, int status);
 void		mlx_error(t_vars *vars);
-void		mlx_exit(t_vars *vars);
-void		mlx_exit_msg(t_vars *vars, char *msg);
+void		mlx_exit(t_vars *vars, char *msg, int status);
+void		mlx_hook_exit(t_vars *vars);
 
+// -------------- FREE -------------- //
+void		free_map(t_vars *vars);
+void		mlx_free(t_vars *vars);
+
+// --------------- GNL -------------- //
+char		*get_next_line(int fd);
+
+// ------------- FT_PUT ------------- //
+void		ft_putstr(char *str);
+void		ft_putnbr(int n);
+void		ft_putmoves(t_vars *vars);
+
+// ------------ FT_SPLIT ------------ //
+char		**ft_split(char const *s, char c);
+
+// ----------- FT_STRJOIN ----------- //
+char		*ft_strjoin(char *s1, char *s2);
+
+// ------------ FT_UTILS ------------ //
+int			ft_strlen(const char *str);
+char		*ft_strchr(const char *string, int c);
+char		*ft_calloc(size_t nmemb, size_t size);
+int			ft_count_word(char const *s, char c);
+
+// ---------- COLLECTIBLES ---------- //
+void		check_collectible(t_vars *vars);
+
+// ------------ GAME_EXIT ----------- //
+void		check_exit(t_vars *vars, int direction);
+int			check_stand_exit(t_vars *vars);
+
+// -------------- MOVES ------------- //
 void		move_up(t_vars *vars);
 void		move_down(t_vars *vars);
 void		move_right(t_vars *vars);
 void		move_left(t_vars *vars);
 
-void		check_collectible(t_vars *vars);
+// ------------ MAP_CHECK ----------- //
+void		check_map(t_vars *vars);
 
-void		check_exit(t_vars *vars, int direction);
-int			check_stand_exit(t_vars *vars);
+// ------------ MAP_OPEN ------------ //
+void		open_map(t_vars *vars, char *path);
 
-void ft_exit(t_vars *vars, char *msg, int status);
+// ------------ MLX_INIT ------------ //
+void		mlx_initialize_win(t_vars *vars);
+void		mlx_initialize_img(t_vars *vars);
 
-char		*get_next_line(int fd);
-char		**ft_split(char const *s, char c);
-
-void		ft_putstr(char *str);
-void		ft_putnbr(int n);
-void		ft_putmoves(t_vars *vars);
-int			ft_strlen(const char *str);
-char		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_strchr(const char *string, int c);
-char		*ft_strjoin(char *s1, char *s2);
+// ------------- MLX_RUN ------------ //
+int			key_press(int keycode, t_vars *vars);
+int			render_frame(t_vars *vars);
 
 #endif
