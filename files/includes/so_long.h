@@ -74,20 +74,30 @@ void		mlx_initialize_img(t_vars *vars);
 int			key_press(int keycode, t_vars *vars);
 int			render_frame(t_vars *vars);
 
+void    free_map(t_vars *vars);
 void		mlx_free(t_vars *vars);
 void		mlx_error(t_vars *vars);
 void		mlx_exit(t_vars *vars);
+void		mlx_exit_msg(t_vars *vars, char *msg);
 
 void		move_up(t_vars *vars);
 void		move_down(t_vars *vars);
 void		move_right(t_vars *vars);
 void		move_left(t_vars *vars);
 
-void		ft_exit(char *s, int status);
+void		check_collectible(t_vars *vars);
+
+void		check_exit(t_vars *vars, int direction);
+int			check_stand_exit(t_vars *vars);
+
+void ft_exit(t_vars *vars, char *msg, int status);
 
 char		*get_next_line(int fd);
 char		**ft_split(char const *s, char c);
 
+void		ft_putstr(char *str);
+void		ft_putnbr(int n);
+void		ft_putmoves(t_vars *vars);
 int			ft_strlen(const char *str);
 char		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strchr(const char *string, int c);
