@@ -24,8 +24,8 @@ void	mlx_initialize_exit(t_vars *vars)
 			&vars->exit.width, &vars->exit.height);
 	if (!vars->exit.img)
 		mlx_error(vars);
-	vars->exit.path1 = "./../assets/exit1.xpm";
-	vars->exit.img1 = mlx_xpm_file_to_image(vars->mlx, vars->exit.path1,
+	vars->exit.path = "./../assets/exit1.xpm";
+	vars->exit.img1 = mlx_xpm_file_to_image(vars->mlx, vars->exit.path,
 			&vars->exit.width, &vars->exit.height);
 	if (!vars->exit.img1)
 		mlx_error(vars);
