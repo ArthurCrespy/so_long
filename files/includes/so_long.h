@@ -151,6 +151,9 @@ void		count_objects(t_vars *vars);
 // ------------ MLX_INIT ------------ //
 void		mlx_initialize_win(t_vars *vars);
 void		mlx_initialize_img(t_vars *vars);
+void		mlx_initialize_player(t_vars *vars);
+void		mlx_initialize_exit(t_vars *vars);
+void		mlx_initialize_objects(t_vars *vars);
 
 // ------------- MLX_RUN ------------ //
 int			key_press(int keycode, t_vars *vars);

@@ -36,6 +36,9 @@ SRCS := \
 			map_open_file.c \
 			map_open_objects.c \
 			mlx_initialize.c \
+			mlx_initialize_exit.c \
+			mlx_initialize_objects.c \
+			mlx_initialize_player.c \
 			mlx_run.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
