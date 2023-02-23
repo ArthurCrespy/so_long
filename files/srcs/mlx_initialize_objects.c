@@ -20,7 +20,7 @@ void	mlx_initialize_objects(t_vars *vars)
 			&vars->background.width, &vars->background.height);
 	if (!vars->background.img)
 		mlx_error(vars);
-	vars->wall.path = "./../assets/walll.xpm";
+	vars->wall.path = "./../assets/wall.xpm";
 	vars->wall.img = mlx_xpm_file_to_image(vars->mlx, vars->wall.path,
 			&vars->wall.width, &vars->wall.height);
 	if (!vars->wall.img)
