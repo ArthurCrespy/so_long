@@ -43,7 +43,7 @@ void	move_up(t_vars *vars)
 		vars->player.y -= 64;
 		vars->player.nb++;
 		check_collectible(vars);
-		vars->player.nb1 *= -1;
+		vars->player.dir = 3;
 	}
 }
 
@@ -60,7 +60,7 @@ void	move_down(t_vars *vars)
 		vars->player.y += 64;
 		vars->player.nb++;
 		check_collectible(vars);
-		vars->player.nb1 *= -1;
+		vars->player.dir = 3;
 	}
 }
 
@@ -77,7 +77,7 @@ void	move_right(t_vars *vars)
 		vars->player.x += 64;
 		vars->player.nb++;
 		check_collectible(vars);
-		vars->player.nb1 *= -1;
+		vars->player.dir = 4;
 	}
 }
 
@@ -94,6 +94,6 @@ void	move_left(t_vars *vars)
 		vars->player.x -= 64;
 		vars->player.nb++;
 		check_collectible(vars);
-		vars->player.nb1 *= -1;
+		vars->player.dir = 3;
 	}
 }
