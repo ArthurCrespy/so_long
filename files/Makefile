@@ -55,6 +55,9 @@ all: miniLibX ${NAME}
 miniLibX:
 	${MAKE} -C mlx_linux
 
+miniLibXClean:
+	${MAKE} clean -C mlx_linux
+
 ${NAME}: ${OBJS}
 	${CC} ${OBJS} -Lmlx_linux -lmlx_Linux -L./mlx_linux -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
@@ -69,7 +72,7 @@ clean:
 	${RM} ${OBJS}
 	${info REMOVED OBJECTS: ${OBJS}}
 
-fclean: clean
+fclean: miniLibXClean clean
 	${RM} ${NAME}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
