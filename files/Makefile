@@ -68,11 +68,11 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${CC} ${CFLAGS} -c -o $@ $<
 	${info OBJECT CREATED: $@}
 
-clean:
+clean: miniLibXClean
 	${RM} ${OBJS}
 	${info REMOVED OBJECTS: ${OBJS}}
 
-fclean: miniLibXClean clean
+fclean: clean
 	${RM} ${NAME}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
