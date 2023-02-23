@@ -40,12 +40,18 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->background.img);
 	if (vars->player.img)
 		mlx_destroy_image(vars->mlx, vars->player.img);
+	if (vars->player.img1)
+		mlx_destroy_image(vars->mlx, vars->player.img1);
 	if (vars->coin.img)
 		mlx_destroy_image(vars->mlx, vars->coin.img);
 	if (vars->wall.img)
 		mlx_destroy_image(vars->mlx, vars->wall.img);
 	if (vars->exit.img)
+		mlx_destroy_image(vars->mlx, vars->exit.img1);
+	if (vars->exit.img1)
 		mlx_destroy_image(vars->mlx, vars->exit.img);
+	if (vars->hole.img)
+		mlx_destroy_image(vars->mlx, vars->hole.img);
 	if (vars->mlx_win)
 		mlx_destroy_window(vars->mlx, vars->mlx_win);
 	if (vars->mlx_win)
