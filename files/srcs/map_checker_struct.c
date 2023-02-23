@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:20:35 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:15:59 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:58:54 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	check_map_walls(t_vars *vars)
 		i_row = 0;
 		while (vars->map.map[i_col][i_row])
 		{
-			if (i_row == 0 || i_row == vars->map.width - 1 ||
-				i_col == 0 || i_col == vars->map.height - 1)
+			if (i_col == 0 || i_col == vars->map.height / 64 - 1
+				|| i_row == 0 || i_row == vars->map.width / 64 - 1)
 			{
 				if (vars->map.map[i_col][i_row] != '1')
 				{
@@ -58,16 +58,15 @@ void	check_map_walls(t_vars *vars)
 	}
 }
 
-void check_map_path_coin(t_vars *vars)
+void	check_map_path_coin(t_vars *vars)
 {
-	int player_x;
-	int player_y;
-	int coins;
+	int	player_x;
+	int	player_y;
+	int	coins;
 
 	player_x = get_position_x(vars, 'P');
 	player_y = get_position_y(vars, 'P');
-	coins = ft_flood_fill(vars->map.coin_map, 'C', player_x, player_y,
-						  vars->map.width / 64, vars->map.height / 64);
+	coins = ft_flood_fill_coin(vars, vars->map.coin_map, player_x, player_y);
 	if (coins != vars->coin.nb)
 	{
 		ft_free_map(vars);
@@ -75,16 +74,15 @@ void check_map_path_coin(t_vars *vars)
 	}
 }
 
-void check_map_path_exit(t_vars *vars)
+void	check_map_path_exit(t_vars *vars)
 {
-	int player_x;
-	int player_y;
-	int exit;
+	int	player_x;
+	int	player_y;
+	int	exit;
 
 	player_x = get_position_x(vars, 'P');
 	player_y = get_position_y(vars, 'P');
-	exit = ft_flood_fill(vars->map.exit_map, 'E', player_x, player_y,
-	                     vars->map.width / 64, vars->map.height / 64);
+	exit = ft_flood_fill_exit(vars, vars->map.exit_map, player_x, player_y);
 	if (exit != 1)
 	{
 		ft_free_map(vars);
@@ -92,7 +90,7 @@ void check_map_path_exit(t_vars *vars)
 	}
 }
 
-void check_map_path(t_vars *vars)
+void	check_map_path(t_vars *vars)
 {
 	check_map_path_coin(vars);
 	check_map_path_exit(vars);
