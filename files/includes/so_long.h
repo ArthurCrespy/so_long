@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:16:31 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/23 13:00:06 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_map
 	int		width;
 	int		height;
 	char	**map;
-	char    **coin_map;
+	char	**coin_map;
 	char	**exit_map;
 
 }				t_map;
@@ -49,10 +49,13 @@ typedef struct s_object
 	int		x;
 	int		y;
 	int		nb;
+	int		nb1;
 	int		width;
 	int		height;
 	char	*path;
+	char	*path1;
 	void	*img;
+	void	*img1;
 }			t_object;
 
 typedef struct s_vars
@@ -66,7 +69,11 @@ typedef struct s_vars
 	t_object	coin;
 	t_object	exit;
 	t_object	wall;
+	t_object	hole;
 }				t_vars;
+
+// -------------- MAIN -------------- //
+int			main(int argc, char **argv);
 
 // ----------- ARGS_CHECK ----------- //
 void		check_args(int argc, char **argv);
@@ -82,8 +89,8 @@ void		ft_free_map(t_vars *vars);
 void		mlx_free(t_vars *vars);
 
 // ----------- FLOOD_FILL ----------- //
-int			ft_flood_fill(char **map, char c, int x, int y, int width, int height);
-
+int			ft_flood_fill_coin(t_vars *vars, char **map, int x, int y);
+int			ft_flood_fill_exit(t_vars *vars, char **map, int x, int y);
 // --------------- GNL -------------- //
 char		*get_next_line(int fd);
 
@@ -99,8 +106,10 @@ char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char *s1, char *s2);
 
 // ------------ FT_UTILS ------------ //
-int			ft_compare(char c, char c1);
+size_t		ft_len(int n);
+char		*ft_itoa(int n);
 int			ft_strlen(const char *str);
+int			ft_compare(char c, char c1);
 char		*ft_strchr(const char *string, int c);
 char		*ft_calloc(size_t nmemb, size_t size);
 int			ft_count_word(char const *s, char c);
@@ -111,6 +120,7 @@ void		check_collectible(t_vars *vars);
 // ------------ GAME_EXIT ----------- //
 void		check_exit(t_vars *vars, int direction);
 int			check_stand_exit(t_vars *vars);
+int			check_black_hole(t_vars *vars, int direction);
 
 // -------------- MOVES ------------- //
 void		move_up(t_vars *vars);
