@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:15:46 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:15:49 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:16:27 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ void	check_map_letters(t_vars *vars)
 		while (vars->map.map[i_col][i_row])
 		{
 			if (vars->map.map[i_col][i_row] != '1'
-			    && vars->map.map[i_col][i_row] != '0'
-			    && vars->map.map[i_col][i_row] != 'P'
-			    && vars->map.map[i_col][i_row] != 'C'
-			    && vars->map.map[i_col][i_row] != 'E')
+				&& vars->map.map[i_col][i_row] != '0'
+				&& vars->map.map[i_col][i_row] != 'P'
+				&& vars->map.map[i_col][i_row] != 'C'
+				&& vars->map.map[i_col][i_row] != 'E'
+				&& vars->map.map[i_col][i_row] != 'X')
 			{
 				ft_free_map(vars);
 				ft_exit("Error: Invalid character in map\n", 1);
