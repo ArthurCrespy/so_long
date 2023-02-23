@@ -50,7 +50,10 @@ RM          := rm -f
 MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p ${@D}
 
-all: ${NAME}
+all: miniLibX ${NAME}
+
+miniLibX:
+	${MAKE} -C mlx_linux
 
 ${NAME}: ${OBJS}
 	${CC} ${OBJS} -Lmlx_linux -lmlx_Linux -L./mlx_linux -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
