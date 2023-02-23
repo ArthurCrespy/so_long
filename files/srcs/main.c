@@ -27,12 +27,3 @@ int	main(int argc, char **argv)
 	mlx_free(&vars);
 	return (0);
 }
-
-// Need to fix Norminette errors
-// Need to add a git clone of the MLX library in the Makefile
-// Need to execute the Makefile of the MLX library
-// ---------------------------- //
-// Maybe add a player animation
-// Maybe add enemies
-// Maybe add sprite animations
-// Maybe add the counter of the number of moves on the screen
