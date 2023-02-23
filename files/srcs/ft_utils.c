@@ -6,29 +6,24 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:12:02 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:15:14 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/22 23:15:24 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int ft_compare(char c, char c1)
+int	ft_compare(char c, char c1)
 {
 	if (c == c1)
 		return (1);
 	return (0);
 }
 
-int	ft_strlen(const char *str)
+int	ft_isspace(char c)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }
 
 char	*ft_strchr(const char *string, int c)
@@ -44,25 +39,32 @@ char	*ft_strchr(const char *string, int c)
 		return (NULL);
 }
 
-char	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_itoa(int n)
 {
-	size_t	i;
-	char	*result;
+	int				len;
+	char			*dest;
+	long long		nb;
 
-	i = 0;
-	if ((size != 0 && nmemb != 0) && ((nmemb * size) / size != nmemb))
+	nb = n;
+	len = ft_len(n);
+	dest = malloc(sizeof(char) * (len + 1));
+	if (dest == NULL)
 		return (NULL);
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	result = malloc(nmemb * size);
-	if (!result)
-		ft_exit("Error: Malloc failed\n", 1);
-	while (i < nmemb * size)
+	if (nb < 0)
 	{
-		result[i] = '\0';
-		i++;
+		dest[0] = '-';
+		nb *= -1;
 	}
-	return (result);
+	if (nb == 0)
+		dest[0] = '0';
+	dest[len--] = '\0';
+	while (nb)
+	{
+		dest[len] = nb % 10 + 48;
+		nb /= 10;
+		len--;
+	}
+	return (dest);
 }
 
 int	ft_count_word(char const *s, char c)
