@@ -78,12 +78,23 @@ void	render_walls(t_vars *vars)
 
 void	render_player(t_vars *vars)
 {
-	if (vars->player.nb1 == -1)
+	static int	i = 0;
+	if (vars->player.dir == 4 && i < 20)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img, vars->player.x, vars->player.y);
-	if (vars->player.nb1 == 1)
+	else if (vars->player.dir == 4 && i < 40)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img1, vars->player.x, vars->player.y);
+	else if (vars->player.dir == 3 && i < 20)
+		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
+			vars->player.img2, vars->player.x, vars->player.y);
+	else if (vars->player.dir == 3 && i < 40)
+		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
+			vars->player.img3, vars->player.x, vars->player.y);
+	else
+		i = 0;
+	i++;
+
 }
 
 int	render_frame(t_vars *vars)

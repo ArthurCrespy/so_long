@@ -19,10 +19,20 @@ void	mlx_initialize_player_img(t_vars *vars)
 			&vars->player.width, &vars->player.height);
 	if (!vars->player.img)
 		mlx_error(vars);
-	vars->player.path1 = "./../assets/player1.xpm";
-	vars->player.img1 = mlx_xpm_file_to_image(vars->mlx, vars->player.path1,
+	vars->player.path = "./../assets/player1.xpm";
+	vars->player.img1 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
 			&vars->player.width, &vars->player.height);
 	if (!vars->player.img1)
+		mlx_error(vars);
+	vars->player.path = "./../assets/player2.xpm";
+	vars->player.img2 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
+	                                         &vars->player.width, &vars->player.height);
+	if (!vars->player.img2)
+		mlx_error(vars);
+	vars->player.path = "./../assets/player3.xpm";
+	vars->player.img3 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
+	                                          &vars->player.width, &vars->player.height);
+	if (!vars->player.img3)
 		mlx_error(vars);
 }
 
@@ -33,7 +43,7 @@ void	mlx_initialize_player(t_vars *vars)
 
 	i_row = 0;
 	vars->player.nb = 0;
-	vars->player.nb1 = 1;
+	vars->player.dir = 4;
 	while (vars->map.map[i_row])
 	{
 		i_col = 0;

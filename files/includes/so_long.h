@@ -49,13 +49,14 @@ typedef struct s_object
 	int		x;
 	int		y;
 	int		nb;
-	int		nb1;
+	int		dir;
 	int		width;
 	int		height;
 	char	*path;
-	char	*path1;
 	void	*img;
 	void	*img1;
+	void	*img2;
+	void	*img3;
 }			t_object;
 
 typedef struct s_vars
