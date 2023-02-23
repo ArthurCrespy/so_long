@@ -6,13 +6,13 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 21:14:39 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:15:34 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/23 00:17:06 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int get_position_x(t_vars *vars, char c)
+int	get_position_x(t_vars *vars, char c)
 {
 	int	i_col;
 	int	i_row;
@@ -32,7 +32,7 @@ int get_position_x(t_vars *vars, char c)
 	return (0);
 }
 
-int get_position_y(t_vars *vars, char c)
+int	get_position_y(t_vars *vars, char c)
 {
 	int	i_col;
 	int	i_row;
