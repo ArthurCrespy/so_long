@@ -43,7 +43,7 @@ $ git clone https://github.com/ArthurCrespy/so_long
 $ git clone git@github.com:ArthurCrespy/so_long.git
 
 # Go into the repository
-$ cd so_long
+$ cd so_long/files
 
 # Run the Makefile
 $ make
