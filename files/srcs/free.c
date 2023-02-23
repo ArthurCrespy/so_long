@@ -33,6 +33,16 @@ void	ft_free_map(t_vars *vars)
 		free(vars->map.exit_map);
 }
 
+void	mlx_free_mlx(t_vars *vars)
+{
+	if (vars->mlx_win)
+		mlx_destroy_window(vars->mlx, vars->mlx_win);
+	if (vars->mlx_win)
+		mlx_destroy_display(vars->mlx);
+	if (vars->mlx)
+		free(vars->mlx);
+}
+
 void	mlx_free(t_vars *vars)
 {
 	ft_free_map(vars);
@@ -42,6 +52,10 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->player.img);
 	if (vars->player.img1)
 		mlx_destroy_image(vars->mlx, vars->player.img1);
+	if (vars->player.img2)
+		mlx_destroy_image(vars->mlx, vars->player.img2);
+	if (vars->player.img3)
+		mlx_destroy_image(vars->mlx, vars->player.img3);
 	if (vars->coin.img)
 		mlx_destroy_image(vars->mlx, vars->coin.img);
 	if (vars->wall.img)
@@ -52,10 +66,6 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->exit.img);
 	if (vars->hole.img)
 		mlx_destroy_image(vars->mlx, vars->hole.img);
-	if (vars->mlx_win)
-		mlx_destroy_window(vars->mlx, vars->mlx_win);
-	if (vars->mlx_win)
-		mlx_destroy_display(vars->mlx);
-	if (vars->mlx)
-		free(vars->mlx);
+	mlx_free_mlx(vars);
 }
+
