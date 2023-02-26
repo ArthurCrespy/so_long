@@ -30,4 +30,9 @@ void	count_objects(t_vars *vars)
 		}
 		i_col++;
 	}
+	if (vars->coin.nb == 0)
+	{
+		ft_free_map(vars);
+		ft_exit("Error: Map must have one collectible\n", 1);
+	}
 }
