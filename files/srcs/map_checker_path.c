@@ -34,6 +34,8 @@ void	check_ext(char *path)
 	i_ext = 0;
 	i_path = ft_strlen(path) - 4;
 	ext = ".ber";
+	if (ft_strlen(path) <= 4 || path[i_path - 1] == '/')
+		ft_exit("Error: File must be a .ber\n", 1);
 	while (i_path != ft_strlen(path))
 	{
 		if (ft_compare(path[i_path], ext[i_ext]) == 0)
