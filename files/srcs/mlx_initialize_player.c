@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:11:48 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/23 12:56:10 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/27 14:58:13 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,27 @@ void	mlx_initialize_player_img(t_vars *vars)
 		mlx_error(vars);
 	vars->player.path = "./../assets/player2.xpm";
 	vars->player.img2 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
-	                                         &vars->player.width, &vars->player.height);
+			&vars->player.width, &vars->player.height);
 	if (!vars->player.img2)
 		mlx_error(vars);
 	vars->player.path = "./../assets/player3.xpm";
 	vars->player.img3 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
-	                                          &vars->player.width, &vars->player.height);
+			&vars->player.width, &vars->player.height);
 	if (!vars->player.img3)
+		mlx_error(vars);
+}
+
+void	mlx_initialize_player_img2(t_vars *vars)
+{
+	vars->player.path = "./../assets/player4.xpm";
+	vars->player.img4 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
+			&vars->player.width, &vars->player.height);
+	if (!vars->player.img4)
+		mlx_error(vars);
+	vars->player.path = "./../assets/player5.xpm";
+	vars->player.img5 = mlx_xpm_file_to_image(vars->mlx, vars->player.path,
+			&vars->player.width, &vars->player.height);
+	if (!vars->player.img5)
 		mlx_error(vars);
 }
 
@@ -43,7 +57,7 @@ void	mlx_initialize_player(t_vars *vars)
 
 	i_row = 0;
 	vars->player.nb = 0;
-	vars->player.dir = 4;
+	vars->player.dir = 1;
 	while (vars->map.map[i_row])
 	{
 		i_col = 0;
@@ -59,4 +73,5 @@ void	mlx_initialize_player(t_vars *vars)
 		i_row++;
 	}
 	mlx_initialize_player_img(vars);
+	mlx_initialize_player_img2(vars);
 }

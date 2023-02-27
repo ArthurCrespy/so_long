@@ -57,6 +57,8 @@ typedef struct s_object
 	void	*img1;
 	void	*img2;
 	void	*img3;
+	void	*img4;
+	void	*img5;
 }			t_object;
 
 typedef struct s_vars

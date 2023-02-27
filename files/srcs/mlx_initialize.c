@@ -46,6 +46,8 @@ void	mlx_initialize_img(t_vars *vars)
 	vars->player.img1 = NULL;
 	vars->player.img2 = NULL;
 	vars->player.img3 = NULL;
+	vars->player.img4 = NULL;
+	vars->player.img5 = NULL;
 	mlx_initialize_objects(vars);
 	mlx_initialize_exit(vars);
 	mlx_initialize_player(vars);

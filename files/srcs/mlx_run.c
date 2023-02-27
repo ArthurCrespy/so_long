@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:23:44 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/23 12:58:40 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/27 15:24:36 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,28 @@ void	render_walls(t_vars *vars)
 void	render_player(t_vars *vars)
 {
 	static int	i = 0;
-	if (vars->player.dir == 4 && i < 20)
+
+	if (vars->player.dir == 4 && i < 50)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img, vars->player.x, vars->player.y);
-	else if (vars->player.dir == 4 && i < 40)
+	else if (vars->player.dir == 4 && i < 100)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img1, vars->player.x, vars->player.y);
-	else if (vars->player.dir == 3 && i < 20)
+	else if (vars->player.dir == 3 && i < 50)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img2, vars->player.x, vars->player.y);
-	else if (vars->player.dir == 3 && i < 40)
+	else if (vars->player.dir == 3 && i < 100)
 		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
 			vars->player.img3, vars->player.x, vars->player.y);
+	else if (vars->player.dir == 1 && i < 50)
+		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
+			vars->player.img4, vars->player.x, vars->player.y);
+	else if (vars->player.dir == 1 && i < 100)
+		mlx_put_image_to_window(vars->mlx, vars->mlx_win,
+			vars->player.img5, vars->player.x, vars->player.y);
 	else
 		i = 0;
 	i++;
-
 }
 
 int	render_frame(t_vars *vars)
