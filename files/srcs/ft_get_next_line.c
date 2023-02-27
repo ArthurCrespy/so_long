@@ -109,5 +109,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(buffer);
 	buffer = ft_next(buffer);
+	if (ft_strlen(line) == 1)
+		free(buffer);
 	return (line);
 }
