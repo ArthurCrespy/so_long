@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 22:16:08 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/22 21:15:02 by acrespy          ###   ########.fr       */
+/*   Updated: 2023/02/27 15:25:18 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ void	mlx_free_mlx(t_vars *vars)
 		free(vars->mlx);
 }
 
-void	mlx_free(t_vars *vars)
+void	mlx_free_player(t_vars *vars)
 {
-	ft_free_map(vars);
-	if (vars->background.img)
-		mlx_destroy_image(vars->mlx, vars->background.img);
 	if (vars->player.img)
 		mlx_destroy_image(vars->mlx, vars->player.img);
 	if (vars->player.img1)
@@ -56,6 +53,18 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->player.img2);
 	if (vars->player.img3)
 		mlx_destroy_image(vars->mlx, vars->player.img3);
+	if (vars->player.img4)
+		mlx_destroy_image(vars->mlx, vars->player.img4);
+	if (vars->player.img5)
+		mlx_destroy_image(vars->mlx, vars->player.img5);
+}
+
+void	mlx_free(t_vars *vars)
+{
+	ft_free_map(vars);
+	if (vars->background.img)
+		mlx_destroy_image(vars->mlx, vars->background.img);
+	mlx_free_player(vars);
 	if (vars->coin.img)
 		mlx_destroy_image(vars->mlx, vars->coin.img);
 	if (vars->wall.img)
@@ -68,4 +77,3 @@ void	mlx_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->hole.img);
 	mlx_free_mlx(vars);
 }
-
