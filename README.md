@@ -15,7 +15,7 @@
         <a href="https://github.com/ArthurCrespy/so_long"> <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/ArthurCrespy/so_long"></a>
     <a href="https://github.com/ArthurCrespy/so_long/commits"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ArthurCrespy/so_long?color=yellow"></a>
     <a href="https://github.com/ArthurCrespy/so_long/watchers"> <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/ArthurCrespy/so_long?color=ff69b4"></a>
-    <a href="https://projects.intra.42.fr/42cursus-so_long/acrespy"> <img alt="Result: NA/100" src="https://img.shields.io/badge/result-NA/100-brightgreen"></a>
+    <a href="https://projects.intra.42.fr/42cursus-so_long/acrespy"> <img alt="Result: 125/100" src="https://img.shields.io/badge/result-125/100-brightgreen"></a>
 
 </p>
 
